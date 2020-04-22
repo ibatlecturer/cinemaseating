@@ -1,13 +1,18 @@
 $(function () {
 
-    const rows = 20;
-    const cols = 10;
-    generateSeating(rows, cols);
+   
     console.log(`Jquery is loaded`)
+
+    $('#btnSeating').on('click',  function () {
+        const rows = parseInt($('#tbRow').val());
+        const cols = parseInt($('#tbCol').val());
+        generateSeating(rows, cols);
+
+    })
 
     // Add a click event handler to a seat
 
-    $('.seat').on('click', function () {
+    $('#seatingArea').on('click', '.seat', function () {
         const numberOfSeatsToBook = 12;
         showConsoleMessage(`Box is clicked`)
 
