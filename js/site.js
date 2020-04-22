@@ -1,5 +1,8 @@
 $(function () {
 
+    const rows = 20;
+    const cols = 10;
+    generateSeating(rows, cols);
     console.log(`Jquery is loaded`)
 
     // Add a click event handler to a seat
@@ -62,4 +65,29 @@ function showSeatsBooked() {
 function showConsoleMessage(message) {
 
     console.log(message)
+}
+
+
+function generateSeating(rows, cols) {
+
+    // Write a loop that outputs a list of divs to represent seats
+
+    for (i = 0; i < rows; i++) {
+
+       for(j = 0; j < cols; j++) {
+        var seatingString =  generateSeat('available', i,j);
+
+        $('#seatingArea').append(seatingString);
+
+       }
+
+    }
+
+
+}
+
+function generateSeat(extraClass, rowNo, colNo) {
+
+    return  `<div class='seat ${extraClass}' data-row='${rowNo}'  data-col='${colNo}'>${rowNo},${colNo}</div>`;
+
 }
