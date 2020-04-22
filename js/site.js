@@ -5,7 +5,7 @@ $(function () {
     // Add a click event handler to a seat
 
     $('.seat').on('click', function () {
-        const numberOfSeatsToBook = 2;
+        const numberOfSeatsToBook = 12;
         showConsoleMessage(`Box is clicked`)
 
         // Is this seat taken and if so don't do anything    
@@ -34,10 +34,30 @@ $(function () {
 
         showConsoleMessage(`Row is ${row} and col is ${col}`)
 
-
+        showSeatsBooked()
 
     });
 })
+
+
+
+function showSeatsBooked() {
+
+    const count = $(".selected").length;
+    var seatingMessage = [];
+    $(".selected").each(function (index) {
+        const row = $(this).data('row');
+        const col = $(this).data('col');
+        seatingMessage.push(`[${row},${col}]`);
+    });
+
+
+    if (count > 0) {
+        $("#seatsBooked").html(`Total Seats Booked: ${count} :  ${seatingMessage.join(' ')}`)
+    } else {
+        $("#seatsBooked").html(`No seats booked`)
+    }
+}
 
 function showConsoleMessage(message) {
 
