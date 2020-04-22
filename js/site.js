@@ -74,12 +74,16 @@ function generateSeating(rows, cols) {
 
     for (i = 0; i < rows; i++) {
 
-       for(j = 0; j < cols; j++) {
-        var seatingString =  generateSeat('available', i,j);
+        for (j = 0; j < cols; j++) {
+            var seatingString = generateSeat('available', i, j);
+            if (j == cols-1) {
 
-        $('#seatingArea').append(seatingString);
+                var seatingString = "<div class='clear'></div>"
+            }
 
-       }
+            $('#seatingArea').append(seatingString);
+
+        }
 
     }
 
@@ -88,6 +92,6 @@ function generateSeating(rows, cols) {
 
 function generateSeat(extraClass, rowNo, colNo) {
 
-    return  `<div class='seat ${extraClass}' data-row='${rowNo}'  data-col='${colNo}'>${rowNo},${colNo}</div>`;
+    return `<div class='seat ${extraClass}' data-row='${rowNo}'  data-col='${colNo}'>${rowNo},${colNo}</div>`;
 
 }
